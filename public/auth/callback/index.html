@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Confirmed – Social Strategy Gym</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   Helvetica, Arial, sans-serif;
+      background: #0A0A0A;
+      color: #ECEDEE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    /* ── Light mode ──────────────────────────── */
+    @media (prefers-color-scheme: light) {
+      body     { background: #FFFFFF; color: #1A1A1A; }
+      h1       { color: #1A1A1A; }
+      .subtitle { color: #6B7280; }
+      .hint    { color: #9CA3AF; }
+    }
+
+    .card {
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .icon-circle {
+      width: 96px;
+      height: 96px;
+      border-radius: 48px;
+      background: rgba(50, 215, 75, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    .icon-circle span {
+      font-size: 44px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #ECEDEE;
+    }
+
+    .subtitle {
+      color: #9BA1A6;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #FF3B30;
+      color: #FFFFFF;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    .hint {
+      margin-top: 20px;
+      color: #6B7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Hidden by default, shown by JS based on device */
+    .mobile-only { display: none; }
+    .desktop-only { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-circle">
+      <span>✅</span>
+    </div>
+    <h1>Email Confirmed!</h1>
+    <p class="subtitle">Your account is ready to go.</p>
+
+    <!-- Mobile: deep link button -->
+    <div class="mobile-only">
+      <a class="btn" id="openApp" href="#">Open the App</a>
+      <p class="hint">
+        If the app didn't open automatically,<br />
+        open the Social Strategy Gym app on your phone.
+      </p>
+    </div>
+
+    <!-- Desktop: no deep link, just a message -->
+    <div class="desktop-only">
+      <p class="hint">
+        You can close this page and return to the<br />
+        Social Strategy Gym app on your phone to continue.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // 1. Capture the token fragment BEFORE clearing it from the URL bar
+    var hash = window.location.hash;
+
+    // 2. Security: clear tokens from the address bar to reduce exposure
+    if (hash && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    // 3. Detect device type
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // 4. Show the appropriate section
+    var mobileEls = document.querySelectorAll('.mobile-only');
+    var desktopEls = document.querySelectorAll('.desktop-only');
+
+    if (isMobile) {
+      for (var i = 0; i < mobileEls.length; i++) mobileEls[i].style.display = 'block';
+
+      // Build the deep link with the captured fragment
+      var deepLink = 'socialgymapp://auth/callback' + hash;
+
+      // Wire up the manual button
+      document.getElementById('openApp').href = deepLink;
+
+      // Auto-redirect on mobile
+      if (hash) {
+        window.location.href = deepLink;
+      }
+    } else {
+      for (var i = 0; i < desktopEls.length; i++) desktopEls[i].style.display = 'block';
+    }
+  </script>
+</body>
+</html>
