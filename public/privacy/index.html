@@ -67,7 +67,7 @@
 <body>
   <div class="container">
     <h1>Privacy Policy</h1>
-    <p class="date">Effective Date: February 13, 2026 · Last Updated: February 13, 2026</p>
+    <p class="date">Effective Date: February 13, 2026 · Last Updated: February 19, 2026</p>
 
     <p>Finesse is a <strong>communication coaching tool</strong> that helps you analyze conversations and craft better responses. We are committed to protecting your privacy.</p>
     <p><strong>IMPORTANT:</strong> We are NOT a mental health service, NOT therapy, and do NOT provide medical advice.</p>
@@ -86,22 +86,36 @@
     <ul>
       <li>Profile screenshots you upload (for analysis purposes only)</li>
       <li>Text conversations you submit</li>
+      <li>Voice recordings you submit (for transcription and analysis via Voice Coach, or voice-to-text input in message modes)</li>
       <li>Analysis results generated</li>
       <li>Number of analyses performed</li>
       <li>Interaction history</li>
+      <li>Coach exercise responses, lesson progress, XP, streaks, and achievements</li>
       <li>Feature usage analytics</li>
-      <li>AI Usage Data: We track estimated costs of AI features you use to manage service limits and ensure fair usage</li>
+      <li>Bug reports and feature requests you submit through the Feedback feature</li>
+      <li>AI Usage Data: We track estimated costs of AI features you use (such as number of API calls, AI model used, and usage timestamps) to manage service limits and ensure fair usage across all users</li>
     </ul>
-    <h3>1.3 Subscription Information</h3>
+    <h3>1.3 People Dossier Data</h3>
+    <p>When you use the People Dossier feature, you may provide information about individuals you communicate with, including:</p>
+    <ul>
+      <li>Name and relationship role (e.g., date, colleague, friend)</li>
+      <li>Communication goal and style notes</li>
+      <li>Red flags or behavioral tags you assign</li>
+      <li>Freeform notes you write about the person</li>
+    </ul>
+    <p>We also generate <strong>AI-derived behavioral insights</strong> from your linked interactions with that person. These observations are stored alongside the dossier entry (up to 15 per person) and are used solely to improve the quality of AI suggestions you receive.</p>
+    <p><strong>Important:</strong> You are responsible for any information you enter about other people. We do not independently collect data about these individuals, verify its accuracy, or share it outside your account.</p>
+    <h3>1.4 Subscription Information</h3>
     <ul>
       <li>Subscription status (Free/Pro)</li>
       <li>Payment information (processed by Apple/Google, NOT stored by us)</li>
       <li>Subscription start/end dates</li>
     </ul>
-    <h3>1.4 Technical Data</h3>
+    <h3>1.5 Technical Data</h3>
     <ul>
       <li>Device type and OS version</li>
       <li>App version</li>
+      <li>Push notification token (if you enable notifications)</li>
       <li>Error logs and crash reports</li>
       <li>Anonymous usage metrics</li>
     </ul>
@@ -111,8 +125,9 @@
     <h2>2. How We Use Your Information</h2>
     <h3>2.1 Core Functionality</h3>
     <ul>
-      <li>Analyze your profile screenshots and text conversations</li>
+      <li>Analyze your profile screenshots, text conversations, and voice recordings</li>
       <li>Generate opening messages and reply suggestions</li>
+      <li>Provide coaching exercises and track your learning progress</li>
       <li>Build your conversation history</li>
       <li>Track usage limits (free tier)</li>
     </ul>
@@ -126,7 +141,9 @@
     <h3>2.3 Communication</h3>
     <ul>
       <li>Send account-related emails</li>
+      <li>Send weekly insight summaries and streak reminder emails</li>
       <li>Notify about subscription status</li>
+      <li>Send push notifications (streak reminders, milestone celebrations)</li>
       <li>Respond to support requests</li>
     </ul>
 
@@ -146,7 +163,14 @@
       <li>You can delete any interaction from your history</li>
       <li>All data encrypted</li>
     </ul>
-    <h3>3.3 Security Measures</h3>
+    <h3>3.3 Voice Recordings</h3>
+    <ul>
+      <li>Audio files are stored on secure cloud infrastructure (Supabase Storage)</li>
+      <li>Encrypted in transit and at rest</li>
+      <li>Used for transcription, acoustic analysis, and AI-powered delivery feedback</li>
+      <li>Linked to your account and optionally to a person in your dossier</li>
+    </ul>
+    <h3>3.4 Security Measures</h3>
     <ul>
       <li>Industry-standard encryption (TLS 1.3)</li>
       <li>Secure authentication (Supabase Auth)</li>
@@ -161,15 +185,18 @@
     <p>We never sell, rent, or share your personal information for marketing purposes.</p>
     <h3>4.2 Third-Party Services We Use</h3>
     <ul>
-      <li><strong>OpenAI:</strong> For AI-powered analysis (profile screenshots and text sent to OpenAI API)</li>
-      <li><strong>Supabase:</strong> For database and authentication</li>
+      <li><strong>OpenAI:</strong> For AI-powered analysis (text, screenshots, and voice recordings sent to OpenAI API for analysis and transcription)</li>
+      <li><strong>Supabase:</strong> For database, authentication, and file storage</li>
+      <li><strong>RevenueCat:</strong> For subscription management (syncs subscription status between Apple/Google and our backend)</li>
       <li><strong>Apple/Google:</strong> For payment processing (in-app purchases)</li>
-      <li><strong>Error Tracking:</strong> For crash reports (anonymized)</li>
+      <li><strong>Resend:</strong> For transactional email delivery (weekly summaries, streak reminders, account notifications)</li>
+      <li><strong>Expo Push:</strong> For delivering push notifications to your device</li>
+      <li><strong>Sentry:</strong> For error tracking and crash reports (anonymized)</li>
     </ul>
     <h3>4.3 Legal Requirements</h3>
     <p>We may disclose information if required by law, court order, or to protect our rights.</p>
     <h3>4.4 Shared Content</h3>
-    <p>When you use the "Share" feature, a branded image card is generated on your device. <strong>What IS included:</strong> aggregate scores, XP earned, streak counts, AI-generated insights, achievement name and rarity, skill path name. <strong>What is NEVER included:</strong> your raw messages, conversation screenshots, voice transcripts, personal details about people you've added, reply suggestions, or opening messages.</p>
+    <p>When you use the "Share" feature, a branded image card is generated on your device. <strong>What IS included:</strong> aggregate scores (clarity score, accuracy %), XP earned, streak counts, AI-generated insights (subtext analysis, improved drafts), achievement name and rarity, skill path name. <strong>What is NEVER included:</strong> your raw messages, conversation screenshots, voice transcripts, personal details about people you've added, reply suggestions, or opening messages.</p>
 
     <hr />
 
@@ -185,13 +212,24 @@
       <li>Delete entire account (contact support)</li>
       <li>Data deletion is permanent and irreversible</li>
     </ul>
+    <h3>5.3 Opt-Out of Analytics</h3>
+    <ul>
+      <li>Disable analytics in Settings (coming soon)</li>
+    </ul>
+    <h3>5.4 Push Notifications</h3>
+    <ul>
+      <li>You can disable push notifications at any time through your device settings</li>
+    </ul>
 
     <hr />
 
     <h2>6. Data Retention</h2>
     <ul>
       <li><strong>Screenshots:</strong> 90 days, then auto-deleted</li>
+      <li><strong>Voice Recordings:</strong> Stored until you delete the interaction or close your account</li>
       <li><strong>Analysis Results:</strong> Stored until you delete or close account</li>
+      <li><strong>People Dossier:</strong> Stored until you delete the person or close your account. AI insights are capped at 15 per person; older insights are automatically replaced.</li>
+      <li><strong>Coach Progress:</strong> Stored while account is active</li>
       <li><strong>Account Data:</strong> Stored while account is active</li>
       <li><strong>Deleted Data:</strong> Permanently removed within 30 days</li>
       <li><strong>AI Usage Tracking Data:</strong> Automatically deleted after 90 days</li>
